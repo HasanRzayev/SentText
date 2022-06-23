@@ -1,0 +1,151 @@
+﻿<Window x:Class="SentText.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SentText" xmlns:viewmodels="clr-namespace:SentText.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
+        mc:Ignorable="d"
+       
+    Background="Gray"
+           TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+   
+     FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="MainWindow" Height="800" Width="1600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+
+                <ColumnDefinition Width="1*" ></ColumnDefinition>
+                <ColumnDefinition Width="3*" ></ColumnDefinition>
+                <ColumnDefinition Width="1*" ></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Border BorderThickness="10" Grid.Column="0">
+                <Label Content="FROM      "  VerticalContentAlignment="Center" FontSize="50"/>
+            </Border>
+            <Border BorderThickness="20" Background="Blue" Grid.Column="1">
+                <TextBlock Text="{Binding From_text,UpdateSourceTrigger=PropertyChanged}" Foreground="Aqua" FontSize="50"   Background="Gray"></TextBlock>
+            </Border>
+            <Border BorderThickness="20" Grid.Column="2">
+                <Grid
+ >
+                    <Button Height="100" 
+    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+
+Command="{Binding Fromfile_button }"
+    ToolTip="MaterialDesignRaisedDarkButton with Round Corners"
+    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                        <TextBlock
+      Text="FILE"   FontSize="50"/>
+                    </Button>
+                </Grid>
+            </Border>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+
+                <ColumnDefinition Width="1*" ></ColumnDefinition>
+                <ColumnDefinition Width="3*" ></ColumnDefinition>
+                <ColumnDefinition Width="1*" ></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Border BorderThickness="10" Grid.Column="0">
+                <Label Content="To      "  VerticalContentAlignment="Center" FontSize="50"/>
+            </Border>
+            <Border BorderThickness="20" Background="Blue" Grid.Column="1">
+                <TextBlock Text="{Binding To_text,UpdateSourceTrigger=PropertyChanged}" FontSize="50"   Background="Gray"></TextBlock>
+            </Border>
+            <Border BorderThickness="20" Grid.Column="2">
+                <Grid
+ >
+                    <Button Height="100" 
+    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+Command="{Binding Tofile_button}"
+
+    ToolTip="MaterialDesignRaisedDarkButton with Round Corners"
+    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                        <TextBlock
+      Text="FILE"   FontSize="50"/>
+                    </Button>
+                </Grid>
+            </Border>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" ></ColumnDefinition>
+                <ColumnDefinition Width="1.2*" ></ColumnDefinition>
+                <ColumnDefinition Width="1.1*" ></ColumnDefinition>
+                <ColumnDefinition Width="1*" ></ColumnDefinition>
+                <ColumnDefinition Width="1*" ></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <ProgressBar Grid.Column="0"
+  Value="{Binding Value,UpdateSourceTrigger=PropertyChanged}"
+  Height="100" />
+            <Border BorderThickness="20" Grid.Column="1">
+                <Grid
+ >
+                    <Button Height="90"
+    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+
+
+    ToolTip="MaterialDesignRaisedDarkButton with Round Corners"
+    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                        <TextBlock
+      Text="SUSPEND"  FontSize="40"/>
+                    </Button>
+                </Grid>
+            </Border>
+            <Border BorderThickness="20" Grid.Column="2">
+                <Grid
+ >
+                    <Button Height="90" 
+    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+
+
+    ToolTip="MaterialDesignRaisedDarkButton with Round Corners"
+    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                        <TextBlock
+      Text="RESUME"  FontSize="40"/>
+                    </Button>
+                </Grid>
+            </Border>
+            <Border BorderThickness="20" Grid.Column="3">
+                <Grid
+ >
+                    <Button Height="90"
+    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+
+
+    ToolTip="MaterialDesignRaisedDarkButton with Round Corners"
+    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                        <TextBlock
+      Text="ABORT"  FontSize="40"/>
+                    </Button>
+                </Grid>
+            </Border>
+            <Border BorderThickness="20" Grid.Column="4">
+                <Grid
+ >
+                    <Button Height="90" 
+    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+
+Command="{Binding Copy}"
+    ToolTip="MaterialDesignRaisedDarkButton with Round Corners"
+    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                        <TextBlock
+      Text="COPY"  FontSize="40"/>
+                    </Button>
+                </Grid>
+            </Border>
+        </Grid>
+
+
+    </Grid>
+</Window>
