@@ -107,10 +107,11 @@ namespace SentText.ViewModels
                     do
                     {
                         len = fsRead.Read(buffer, 0, buffer.Length);
-                        Value=Value+Convert.ToInt32((100*10)/fileSize);
+                        int lazimli = (int)((int)fsRead.Length)/((100*len));
+                        Value=Value+lazimli;
                         fsWrite.Write(buffer, 0, len);
-                        MaterialMessageBox.ShowError(@"oldu");
-    
+
+                        Thread.Sleep(300);
                         fileSize -= len;
                       
 
