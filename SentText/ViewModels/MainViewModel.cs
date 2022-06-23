@@ -107,11 +107,15 @@ namespace SentText.ViewModels
                     do
                     {
                         len = fsRead.Read(buffer, 0, buffer.Length);
-                        int lazimli = (int)((int)fsRead.Length)/((100*len));
-                        Value=Value+lazimli;
+                        if (fsRead.Length!=0 &&len!=0)
+                        {
+                            int lazimli = (int)((int)fsRead.Length)/((100*len));
+                            Value=Value+lazimli;
+                        }
+                       
                         fsWrite.Write(buffer, 0, len);
-
-                        Thread.Sleep(300);
+                        Thread.Sleep (100);
+                        
                         fileSize -= len;
                       
 
