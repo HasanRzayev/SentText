@@ -94,6 +94,7 @@ Command="{Binding Tofile_button}"
                     <Button Height="90"
     Style="{StaticResource MaterialDesignRaisedDarkButton}"
 
+Command="{Binding Suspend}"
 
     ToolTip="MaterialDesignRaisedDarkButton with Round Corners"
     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
@@ -108,7 +109,7 @@ Command="{Binding Tofile_button}"
                     <Button Height="90" 
     Style="{StaticResource MaterialDesignRaisedDarkButton}"
 
-
+Command="{Binding Resume}"
     ToolTip="MaterialDesignRaisedDarkButton with Round Corners"
     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
                         <TextBlock
@@ -123,6 +124,7 @@ Command="{Binding Tofile_button}"
     Style="{StaticResource MaterialDesignRaisedDarkButton}"
 
 
+Command="{Binding Abort}"
     ToolTip="MaterialDesignRaisedDarkButton with Round Corners"
     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
                         <TextBlock

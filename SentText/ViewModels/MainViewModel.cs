@@ -106,20 +106,21 @@ namespace SentText.ViewModels
 
                     do
                     {
+                        int option = 100 * len;
+                        int lazimli = (int)(option / (int)fsRead.Length);
+                        Value = Value + lazimli;
                         len = fsRead.Read(buffer, 0, buffer.Length);
-                        if (fsRead.Length!=0 &&len!=0)
-                        {
-                            int lazimli = (int)((int)fsRead.Length)/((100*len));
-                            Value=Value+lazimli;
-                        }
+               
                        
                         fsWrite.Write(buffer, 0, len);
                         Thread.Sleep (100);
+                       
+
+               
                         
-                        fileSize -= len;
-                      
 
                     } while (len != 0);
+                    
                     MaterialMessageBox.ShowError(@"Transfer tamamlandi!!!!!!!!!!!!");
 
                 }
@@ -130,6 +131,68 @@ namespace SentText.ViewModels
             get => new RelayCommand(() =>
             {
                 thread.Start();
+
+
+            });
+        }
+
+        public RelayCommand Suspend
+        {
+            get => new RelayCommand(() =>
+            {
+                try
+                {
+                    thread.Suspend();
+                    MaterialMessageBox.ShowError(@"Thread   gozledilir!!!!");
+
+                }
+                catch (Exception ex)
+                {
+
+                    MaterialMessageBox.ShowError(ex.ToString());
+                }
+
+
+            });
+        }
+
+        public RelayCommand Resume
+        {
+            get => new RelayCommand(() =>
+            {
+                try
+                {
+                    thread.Resume();
+                    MaterialMessageBox.ShowError(@"Thread  devam etdirilir!!!!");
+                }
+                catch (Exception ex)
+                {
+
+                    MaterialMessageBox.ShowError(ex.ToString());
+                }
+
+
+            });
+        }
+
+        public RelayCommand Abort
+        {
+            get => new RelayCommand(() =>
+            {
+                try
+                {
+                    thread.Abort();
+
+                    Value = 0;
+                    MaterialMessageBox.ShowError(@"Thread  dayandirildi!!!!!");
+
+
+                }
+                catch (Exception ex)
+                {
+
+                    MaterialMessageBox.ShowError(ex.ToString());
+                }
 
 
             });
