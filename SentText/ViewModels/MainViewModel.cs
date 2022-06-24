@@ -130,7 +130,25 @@ namespace SentText.ViewModels
         {
             get => new RelayCommand(() =>
             {
-                thread.Start();
+                try
+                {
+
+                    if (thread.ThreadState == ThreadState.Running)
+                    {
+                        
+                        thread = new Thread(copy);
+                        thread.Start();
+                    }
+                    else
+                    {
+                        thread.Start();
+                    }
+                   
+                }
+                catch (Exception ex)
+                {
+                    MaterialMessageBox.ShowError(ex.ToString());
+                }
 
 
             });
@@ -162,6 +180,7 @@ namespace SentText.ViewModels
             {
                 try
                 {
+                    
                     thread.Resume();
                     MaterialMessageBox.ShowError(@"Thread  devam etdirilir!!!!");
                 }
@@ -183,6 +202,7 @@ namespace SentText.ViewModels
                 {
                     thread.Abort();
 
+                    
                     Value = 0;
                     MaterialMessageBox.ShowError(@"Thread  dayandirildi!!!!!");
 
@@ -201,7 +221,7 @@ namespace SentText.ViewModels
         public MainViewModel()
         {
             thread = new Thread(copy);
-
+            thread.IsBackground = true;
         }
     }
 }
